@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
-const AudioRecorder = ({ id, setTeamCount, teamCount, clearMessage }) => {
+const AudioRecorder = ({ id, setTeamCount, teamCount, clearMessage, triggerConfetti }) => {
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef(null);
   const [audioBlob, setAudioBlob] = useState(null);
@@ -58,6 +58,7 @@ const AudioRecorder = ({ id, setTeamCount, teamCount, clearMessage }) => {
         console.log("it's a success!!");
         console.log("team count: " + teamCount);
         setTeamCount(parseInt(id)); // Update the team count with the current ID
+        triggerConfetti(); // Trigger confetti
       }
       setResponseMessage(response.data.response); // Update the state with the response message
     } catch (err) {

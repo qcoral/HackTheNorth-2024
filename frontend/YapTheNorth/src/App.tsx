@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import AudioRecorder from "./components/AudioRecorder.jsx";
 import Timer from "./components/Timer.jsx";
+import Confetti from "react-confetti";
 import "./App.css";
 
 // Correct image imports
@@ -20,7 +21,8 @@ function App() {
     const [teamCount, setTeamCount] = useState(0);
     const [isTeammate, setIsTeammate] = useState(Array(7).fill(false)); // State variable to track teammates
     const [clearMessage, setClearMessage] = useState(false); // State variable to clear message
-    const [showHowToPlay, setShowHowToPlay] = useState(false);
+    const [showHowToPlay, setShowHowToPlay] = useState(false); // State variable for "How to Play" screen
+    const [showConfetti, setShowConfetti] = useState(false); // State variable for confetti
 
     const names = [
         "Angeldust",
@@ -57,16 +59,21 @@ function App() {
         }
     };
 
+    const triggerConfetti = () => {
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 5000); // Show confetti for 3 seconds
+    };
+
     const toggleHowToPlay = () => {
-      setShowHowToPlay((prevShow) => !prevShow);
+        setShowHowToPlay((prevShow) => !prevShow);
     };
 
     return (
         <>
-
-        <div>
-          <p style={{fontSize: "32px", fontWeight: "bold", color: "#FF037D"}}>yap the north!</p>
-        </div>
+            {showConfetti && <Confetti />}
+            <div>
+                <p style={{fontSize: "32px", fontWeight: "bold", color: "#FF037D"}}>yap the north!</p>
+            </div>
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={{ margin: "5px" }}>
                     <button onClick={decreaseId}>previous character</button>
@@ -82,11 +89,9 @@ function App() {
                 <img src={images[recorderId]} alt={names[recorderId]} style={{ width: "100px", height: "100px", borderRadius: "10px" }} />
             </div>
             
-            <AudioRecorder id={recorderId.toString()} setTeamCount={handleSetTeamCount} teamCount={teamCount} clearMessage={clearMessage} /> 
+            <AudioRecorder id={recorderId.toString()} setTeamCount={handleSetTeamCount} teamCount={teamCount} clearMessage={clearMessage} triggerConfetti={triggerConfetti} /> 
             </div>
             
-            
-
             <div>
                 <Timer teamCount={teamCount} /> 
                 <p>Team members: {teamCount} out of 3</p>
