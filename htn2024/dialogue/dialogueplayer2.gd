@@ -45,16 +45,12 @@ func _on_request_completed(results, response_code, headers, body):
 	print("Response Body: %s" % body.get_string_from_utf8())
 	
 func start_convo(id):
-	load_dialogue()
 	record_audio()
 	send_request()
-
+	load_dialogue(response)
 	
-func _on_record_button_pressed() -> void:
-	pass # Replace with function body.
-
-func load_dialogue_screen():
-	$NinePatchRect.visible = true
+	
+func record_audio():
 	
 	# TODO, record audio
 	

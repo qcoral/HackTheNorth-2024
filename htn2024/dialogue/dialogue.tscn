@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://0wtckhjpmnvb"]
+[gd_scene load_steps=4 format=3 uid="uid://0wtckhjpmnvb"]
 
 [ext_resource type="Script" path="res://dialogue/dialogueplayer.gd" id="1_rpx3r"]
 [ext_resource type="Texture2D" uid="uid://derrc68xijla7" path="res://assets/Dialogue Box.png" id="2_passy"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_aqs88"]
 
 [node name="Dialogue" type="Control"]
 layout_mode = 3
@@ -39,3 +41,19 @@ offset_right = 468.0
 offset_bottom = 147.0
 scale = Vector2(0.4, 0.4)
 text = "chatting..."
+
+[node name="RecordButton" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 163.0
+offset_top = 5.0
+offset_right = 226.0
+offset_bottom = 36.0
+scale = Vector2(0.318149, 0.326168)
+text = "Record"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="NinePatchRect"]
+stream = SubResource("AudioStreamMicrophone_aqs88")
+autoplay = true
+bus = &"Record"
+
+[connection signal="pressed" from="NinePatchRect/RecordButton" to="." method="_on_record_button_pressed"]

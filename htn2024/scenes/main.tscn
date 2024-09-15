@@ -100,6 +100,14 @@ polygon = PackedVector2Array(22, 677, 22, 609, 318, 610, 320, 898, 670, 896, 670
 position = Vector2(9, -65)
 
 [node name="Dialogue" parent="hacker-npc" instance=ExtResource("4_5uf7u")]
+<<<<<<< HEAD
+offset_left = -9.0
+offset_top = 65.0
+offset_right = 31.0
+offset_bottom = 105.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="hacker-npc/Dialogue"]
+=======
 offset_left = -23.0
 offset_top = 67.0
 offset_right = 17.0
@@ -133,6 +141,7 @@ offset_left = 52.0
 offset_right = 92.0
 offset_bottom = 23.0
 text = "000"
+<<<<<<< HEAD
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -162,3 +171,6 @@ offset_left = 17.0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "/3"
+=======
+>>>>>>> refs/remotes/origin/main
+>>>>>>> refs/remotes/origin/main
