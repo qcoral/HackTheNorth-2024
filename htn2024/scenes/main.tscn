@@ -47,3 +47,5 @@ offset_left = -9.0
 offset_top = 65.0
 offset_right = 31.0
 offset_bottom = 105.0
+
+[node name="HTTPRequest" type="HTTPRequest" parent="hacker-npc/Dialogue"]

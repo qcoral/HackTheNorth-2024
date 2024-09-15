@@ -5,6 +5,7 @@ func _ready():
 
 		# Create a timer node
 	var timer: Timer = Timer.new()
+	
 	# Add it to the scene as a child of this node
 	add_child(timer)
 	# Configure the timer
@@ -46,7 +47,7 @@ func _process(delta):
 				move(delta)
 
 	if Input.is_action_just_pressed("chat"):
-		$Dialogue.start()
+		$Dialogue.start() # init at first, then just defaults
 		print("chatting")
 		is_roaming = false
 		is_chatting = true
