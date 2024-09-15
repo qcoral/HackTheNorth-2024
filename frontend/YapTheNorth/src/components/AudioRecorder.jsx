@@ -1,11 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
 
-const AudioRecorder = ({ id, setTeamCount, teamCount }) => {
+const AudioRecorder = ({ id, setTeamCount, teamCount, clearMessage }) => {
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef(null);
   const [audioBlob, setAudioBlob] = useState(null);
-  const [responseMessage, setResponseMessage] = useState(''); // State variable to store the response message
+  const [responseMessage, setResponseMessage] = useState('');
+
+  useEffect(() => {
+    if (clearMessage) {
+      setResponseMessage('');
+    }
+  }, [clearMessage]);
 
   const startRecording = async () => {
     try {
@@ -19,7 +25,7 @@ const AudioRecorder = ({ id, setTeamCount, teamCount }) => {
 
       mediaRecorderRef.current.onstop = () => {
         const blob = new Blob(chunks, { type: 'audio/webm' });
-        setAudioBlob(blob);  // Save blob to state
+        setAudioBlob(blob);
       };
 
       mediaRecorderRef.current.start();
@@ -61,16 +67,19 @@ const AudioRecorder = ({ id, setTeamCount, teamCount }) => {
 
   return (
     <div>
+      <div style={{background: "lightblue", padding: "20px", margin: "10px", borderRadius: "10px"}}>
+         <p>{responseMessage}</p>
+      </div>
+      
       <button onClick={startRecording} disabled={recording}>
         Say a message..
       </button>
-      <button onClick={stopRecording} disabled={!recording}>
+      <button onClick={stopRecording} disabled={!recording} style={{margin: "10px"}}>
         Stop!
       </button>
       <button onClick={uploadAudio} disabled={!audioBlob}>
         Send it to them!
       </button>
-      <p>{responseMessage}</p> {/* Display the response message */}
     </div>
   );
 };

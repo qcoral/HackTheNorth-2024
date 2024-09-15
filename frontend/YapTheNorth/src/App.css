@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color: lightskyblue;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -44,4 +48,6 @@
 .teammate {
   font-weight: bold;
   color: green;
+  background-color: greenyellow;
+  border-radius: 10px;
 }
