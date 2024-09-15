@@ -7,11 +7,11 @@ import "./App.css";
 // Correct image imports
 import img0 from "./assets/characters/img0.png";
 import img1 from "./assets/characters/img1.png";
-import img2 from "./assets/characters/img2.png";
-import img3 from "./assets/characters/img3.png";
-import img4 from "./assets/characters/img4.png";
+import img3 from "./assets/characters/img2.png";
+import img2 from "./assets/characters/img3.png";
+import img6 from "./assets/characters/img4.png";
 import img5 from "./assets/characters/img5.png";
-import img6 from "./assets/characters/img6.png";
+import img4 from "./assets/characters/img6.png";
 
 const images = [img0, img1, img2, img3, img4, img5, img6];
 
@@ -25,10 +25,10 @@ function App() {
     const [showConfetti, setShowConfetti] = useState(false); // State variable for confetti
 
     const names = [
-        "Angeldust",
+        "Dusty",
         "Husk",
-        "Charlie",
         "Lute",
+        "Charlie",
         "Alastor",
         "Vox",
         "Carmilla",
