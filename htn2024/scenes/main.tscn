@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://odpfov52c6re"]
+[gd_scene load_steps=14 format=3 uid="uid://odpfov52c6re"]
 
 [ext_resource type="Texture2D" uid="uid://5gs10511exjr" path="res://assets/HTN Tiles.png" id="1_mncc7"]
 [ext_resource type="PackedScene" uid="uid://b1876wpdh3iqg" path="res://scenes/player.tscn" id="2_3rvpi"]
 [ext_resource type="Texture2D" uid="uid://tu87vudjy8k1" path="res://assets/HTN Tiles Final.png" id="2_p4kvb"]
 [ext_resource type="PackedScene" uid="uid://bbh8clmony1f6" path="res://scenes/hacker_npc.tscn" id="3_jegxs"]
 [ext_resource type="PackedScene" uid="uid://0wtckhjpmnvb" path="res://dialogue/dialogue.tscn" id="4_5uf7u"]
+[ext_resource type="Script" path="res://scripts/Panel.gd" id="6_0iyoo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mc2r"]
 texture = ExtResource("1_mncc7")
@@ -103,3 +104,32 @@ offset_left = -23.0
 offset_top = 67.0
 offset_right = 17.0
 offset_bottom = 107.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_right = 82.0
+offset_bottom = 25.0
+scale = Vector2(8, 8)
+script = ExtResource("6_0iyoo")
+
+[node name="Minutes" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 28.0
+offset_bottom = 23.0
+text = "00:"
+
+[node name="Seconds" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_right = 67.0
+offset_bottom = 23.0
+text = "00."
+
+[node name="Msecs" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 52.0
+offset_right = 92.0
+offset_bottom = 23.0
+text = "000"
