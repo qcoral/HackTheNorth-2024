@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbh8clmony1f6"]
+[gd_scene load_steps=5 format=3 uid="uid://bbh8clmony1f6"]
 
 [ext_resource type="Script" path="res://scripts/hacker-npc.gd" id="1_j3nhl"]
 [ext_resource type="Texture2D" uid="uid://c4egk8u5vjvcg" path="res://assets/NPC.png" id="2_b38g4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dao5j"]
 size = Vector2(29, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gyon"]
+radius = 24.0
 
 [node name="hacker-npc" type="CharacterBody2D"]
 script = ExtResource("1_j3nhl")
@@ -17,5 +20,13 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_dao5j")
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="chat_detection_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
+shape = SubResource("CircleShape2D_8gyon")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="chat_detection_area" to="." method="_on_chat_detection_area_body_entered"]
+[connection signal="body_exited" from="chat_detection_area" to="." method="_on_chat_detection_area_body_exited"]

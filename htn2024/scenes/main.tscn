@@ -39,4 +39,4 @@ position = Vector2(288, 0)
 shape = SubResource("RectangleShape2D_j1ta1")
 
 [node name="hacker-npc" parent="." instance=ExtResource("3_jegxs")]
-position = Vector2(187, 134)
+position = Vector2(9, -65)
