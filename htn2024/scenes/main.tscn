@@ -63,7 +63,7 @@ layer_0/tile_data = PackedInt32Array(-393219, 65538, 0, -327683, 65538, 0, -2621
 position = Vector2(178, 45)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-zoom = Vector2(3, 3)
+zoom = Vector2(4, 4)
 
 [node name="collisions" type="StaticBody2D" parent="."]
 
@@ -141,4 +141,36 @@ offset_left = 52.0
 offset_right = 92.0
 offset_bottom = 23.0
 text = "000"
+<<<<<<< HEAD
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer2"]
+anchors_preset = -1
+anchor_left = 0.003
+anchor_top = 0.319
+anchor_right = 0.003
+anchor_bottom = 0.319
+offset_left = 0.544
+offset_top = 0.287996
+offset_right = 40.544
+offset_bottom = 24.288
+scale = Vector2(8, 8)
+
+[node name="Label" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 4.75
+offset_top = 0.125
+offset_right = 20.75
+offset_bottom = 23.125
+text = "0"
+
+[node name="Label2" type="Label" parent="CanvasLayer2/Panel"]
+layout_mode = 0
+offset_left = 17.0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "/3"
+=======
+>>>>>>> refs/remotes/origin/main
 >>>>>>> refs/remotes/origin/main
