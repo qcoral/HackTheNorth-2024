@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 
-const AudioRecorder = ({ id }) => {
+const AudioRecorder = ({ id, setTeamCount, teamCount }) => {
   const [recording, setRecording] = useState(false);
   const mediaRecorderRef = useRef(null);
   const [audioBlob, setAudioBlob] = useState(null);
+  const [responseMessage, setResponseMessage] = useState(''); // State variable to store the response message
 
   const startRecording = async () => {
     try {
@@ -37,8 +38,9 @@ const AudioRecorder = ({ id }) => {
     if (!audioBlob) return;
 
     const formData = new FormData();
-    formData.append('id', id);
     formData.append('audio', audioBlob, 'recording.webm');
+    formData.append('id', id);
+
     try {
       const response = await axios.post('http://localhost:3000/npcresponse', formData, {
         headers: {
@@ -46,6 +48,12 @@ const AudioRecorder = ({ id }) => {
         },
       });
       console.log('Server response:', response.data);
+      if (response.data.team > 0.8) {
+        console.log("it's a success!!");
+        console.log("team count: " + teamCount);
+        setTeamCount(parseInt(id)); // Update the team count with the current ID
+      }
+      setResponseMessage(response.data.response); // Update the state with the response message
     } catch (err) {
       console.error('Error uploading audio:', err);
     }
@@ -54,14 +62,15 @@ const AudioRecorder = ({ id }) => {
   return (
     <div>
       <button onClick={startRecording} disabled={recording}>
-        Start Recording
+        Say a message..
       </button>
       <button onClick={stopRecording} disabled={!recording}>
-        Stop Recording
+        Stop!
       </button>
       <button onClick={uploadAudio} disabled={!audioBlob}>
-        Upload Audio
+        Send it to them!
       </button>
+      <p>{responseMessage}</p> {/* Display the response message */}
     </div>
   );
 };
