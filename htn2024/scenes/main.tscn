@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://odpfov52c6re"]
+[gd_scene load_steps=8 format=3 uid="uid://odpfov52c6re"]
 
 [ext_resource type="Texture2D" uid="uid://5gs10511exjr" path="res://assets/HTN Tiles.png" id="1_mncc7"]
 [ext_resource type="PackedScene" uid="uid://b1876wpdh3iqg" path="res://scenes/player.tscn" id="2_3rvpi"]
 [ext_resource type="PackedScene" uid="uid://bbh8clmony1f6" path="res://scenes/hacker_npc.tscn" id="3_jegxs"]
+[ext_resource type="PackedScene" uid="uid://0wtckhjpmnvb" path="res://dialogue/dialogue.tscn" id="4_5uf7u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8mc2r"]
 texture = ExtResource("1_mncc7")
@@ -40,3 +41,9 @@ shape = SubResource("RectangleShape2D_j1ta1")
 
 [node name="hacker-npc" parent="." instance=ExtResource("3_jegxs")]
 position = Vector2(9, -65)
+
+[node name="Dialogue" parent="hacker-npc" instance=ExtResource("4_5uf7u")]
+offset_left = -9.0
+offset_top = 65.0
+offset_right = 31.0
+offset_bottom = 105.0

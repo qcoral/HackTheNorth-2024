@@ -28,6 +28,7 @@ func _input(event):
 		
 
 func next_script(): # change this part later for ai
+	$NinePatchRect.visible = !$NinePatchRect.visible
 	current_dialogue_id += 1
 	if current_dialogue_id >= len(dialogue):
 		return
